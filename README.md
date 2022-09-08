@@ -1,7 +1,7 @@
-## libcfg
+# libcfg
 A minimalistic and easy to set up configuration manager for C++ projects.
 
-### How to use
+## How to use
 
 ```c++
 #include <iostream>
@@ -31,7 +31,7 @@ int main() {
 }
 ```
 
-### Example config file
+## Example config file
 
 ```cfg
 int=1337
@@ -41,7 +41,7 @@ double=3.14
 bool=1
 ```
 
-### Notes
+## Notes
 
 - The configuration file will be automatically created the first time you start the program.
 - Currently supported setting types are listed [here](https://en.cppreference.com/w/cpp/io/basic_ostream/operator_ltlt)
