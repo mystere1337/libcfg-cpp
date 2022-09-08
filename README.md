@@ -40,3 +40,7 @@ some_string=hello
 
 - The configuration file will be automatically created the first time you start the program, and all values will be set to their defaults.
 - Currently supported setting types are `float`, `int`, `bool` and `std::string`
+
+## Coding style
+
+https://lefticus.gitbooks.io/cpp-best-practices/content/ (except for types which are snake_case), put `.cpp` and `.hpp` files next to each other in ./src
