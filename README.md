@@ -1,10 +1,10 @@
-## config
+## libcfg
 A minimalistic and easy to set up configuration manager for C++ projects.
 
 ### How to use
 
 ```c++
-#include "config.h" // Include header
+#include "src/config.h" // Include header
 
 int main() {
     // 1. Define a settings array containing all your settings
