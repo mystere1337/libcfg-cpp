@@ -9,13 +9,13 @@ A minimalistic and easy to set up configuration manager for C++ projects.
 #include "../src/config.h"
 
 int main() {
-    // 1. Define a settings vector containing all your settings
-    std::vector<std::string> settings = {
-            "int",
-            "float",
-            "string",
-            "bool",
-            "double"
+    // 1. Define a settings vector with their default values
+    std::vector<std::pair<std::string, std::any>> settings = {
+            {"int", 1337},
+            {"float", 3.14},
+            {"string", "hello"},
+            {"bool", true},
+            {"double", 3.14}
         };
 
     // 2. Create a config instance, giving a path to the config file and the settings map
@@ -42,7 +42,7 @@ bool=1
 
 ## Notes
 
-- The configuration file will be automatically created the first time you start the program.
+- The configuration file will be created the first time you start the program and values will be set to their defaults.
 - Currently supported setting types are listed [here](https://en.cppreference.com/w/cpp/io/basic_ostream/operator_ltlt)
 - boolean values need to be written as `0` or `1`
 

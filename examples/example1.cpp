@@ -3,13 +3,13 @@
 
 int main() {
     // 1. Define a settings vector containing all your settings
-    std::vector<std::string> settings = {
-            "int",
-            "float",
-            "string",
-            "bool",
-            "double"
-        };
+    std::vector<std::pair<std::string, std::any>> settings = {
+            {"int", 1337},
+            {"float", 3.14},
+            {"string", "hello"},
+            {"bool", true},
+            {"double", 3.14}
+    };
 
     // 2. Create a config instance, giving a path to the config file and the settings map
     auto* config = new class config(settings, "./config.cfg", true);

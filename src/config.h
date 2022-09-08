@@ -12,13 +12,14 @@ class config {
     std::map<std::string, std::string> m_settings{};
     bool m_is_verbose = false;
 
+    static std::string any_to_string(const std::any& value);
     std::string get_setting_from_file(const std::string& setting_name);
-    void load(const std::vector<std::string>& settings);
-    void set_setting(const std::string &setting_name, std::string value);
+    void load(const std::vector<std::pair<std::string, std::any>>& settings);
+    void set_setting(const std::string &setting_name, const std::any& value);
     void create_file();
 
 public:
-    explicit config(const std::vector<std::string>& settings, std::filesystem::path path = "./config.cfg", bool verbose = false);
+    explicit config(const std::vector<std::pair<std::string, std::any>>& settings, std::filesystem::path path = "./config.cfg", bool verbose = false);
 
     void set_verbose(bool verbose);
     [[nodiscard]] bool is_verbose() const { return m_is_verbose; }
