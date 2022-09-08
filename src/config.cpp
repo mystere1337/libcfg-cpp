@@ -1,6 +1,6 @@
 #include <iostream>
 #include <utility>
-#include "config.h"
+#include "../include/config.h"
 
 config::config(const std::map<std::string, setting_type_e>& settings) : config("./config.cfg", settings) {
 
