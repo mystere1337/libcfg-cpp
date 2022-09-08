@@ -9,10 +9,10 @@ int main() {
             "string",
             "bool",
             "double"
-    };
+        };
 
     // 2. Create a config instance, giving a path to the config file and the settings map
-    auto* config = new class config("./config.cfg", settings);
+    auto* config = new class config(settings, "./config.cfg", true);
 
     // 3. Get settings at runtime using the setting identifier
     std::cout << config->get<int>("int") << std::endl;
