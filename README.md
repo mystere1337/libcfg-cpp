@@ -56,6 +56,7 @@ new=example
 - The configuration file will be created the first time you start the program and values will be set to their defaults.
 - Currently supported setting types are listed [here](https://en.cppreference.com/w/cpp/io/basic_ostream/operator_ltlt)
 - boolean values need to be written as `0` or `1`
+- If somehow 2 values have the same key/name, only the topmost one in the file will be read.
 
 ## Coding style
 
