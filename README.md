@@ -23,6 +23,12 @@ int main() {
 
     // Change settings at runtime
     config->set("double", 10.4);
+    
+    // Save modified settings to file
+    config->save();
+
+    // Reloading a config will replace unsaved values
+    config->reload();
 
     // Get settings at runtime using the setting identifier
     std::cout << config->get<int>("int") << std::endl;
@@ -30,12 +36,6 @@ int main() {
     std::cout << config->get<std::string>("string") << std::endl;
     std::cout << config->get<bool>("bool") << std::endl;
     std::cout << config->get<double>("double") << std::endl;
-
-    // Save modified settings to file
-    config->save();
-
-    // Reloading a config will replace unsaved values
-    config->reload();
 }
 ```
 ### config.cfg
