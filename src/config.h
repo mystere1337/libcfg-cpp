@@ -11,6 +11,7 @@ class config {
     std::filesystem::path m_path{};
     std::map<std::string, std::string> m_settings{};
 
+    static void trim(std::string &s);
     static std::string any_to_string(const std::any& value);
     std::string get_setting_from_file(const std::string& setting_name);
     void load(const std::vector<std::pair<std::string, std::any>>& settings);
