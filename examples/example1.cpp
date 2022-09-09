@@ -3,7 +3,7 @@
 
 int main() {
     // Define a pair of std::string and std::any vector containing all your settings
-    std::vector<std::pair<std::string, std::any>> settings = {
+    config::setting_list settings = {
             {"int", 1337},
             {"float", 3.14},
             {"string", "hello"},

@@ -18,6 +18,8 @@ class config {
     void save(const std::filesystem::path& path);
 
 public:
+    typedef std::vector<std::pair<std::string, std::any>> setting_list;
+
     explicit config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path = "./config.cfg");
 
     template <typename T> T get(const std::string &name);
