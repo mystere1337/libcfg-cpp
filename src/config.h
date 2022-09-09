@@ -10,7 +10,6 @@
 class config {
     std::filesystem::path m_path{};
     std::map<std::string, std::string> m_settings{};
-    bool m_is_verbose = false;
 
     static std::string any_to_string(const std::any& value);
     std::string get_setting_from_file(const std::string& setting_name);
@@ -18,10 +17,7 @@ class config {
     void save(const std::filesystem::path& path);
 
 public:
-    explicit config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path = "./config.cfg", bool verbose = false);
-
-    void set_verbose(bool verbose);
-    [[nodiscard]] bool is_verbose() const { return m_is_verbose; }
+    explicit config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path = "./config.cfg");
 
     template <typename T> T get(const std::string &name);
     void set(const std::string &setting_name, const std::any& value);

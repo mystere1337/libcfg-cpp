@@ -19,7 +19,7 @@ int main() {
     };
 
     // Create a config instance, giving a path to the config file and the settings vector
-    auto* config = new class config(settings, "./config.cfg", true);
+    auto* config = new class config(settings, "./config.cfg");
 
     // Change settings at runtime
     config->set("double", 10.4);

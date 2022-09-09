@@ -2,7 +2,7 @@
 #include <utility>
 #include "config.h"
 
-config::config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path, bool verbose) : m_path(path), m_is_verbose(verbose) {
+config::config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path) : m_path(path) {
     load(settings);
     save(path);
 }
@@ -38,10 +38,6 @@ std::string config::get_setting_from_file(const std::string& setting_name) {
         }
     }
 
-    if (m_is_verbose) {
-        std::cout << setting_name << ": " << value << std::endl;
-    }
-
     return value;
 }
 
@@ -58,10 +54,6 @@ void config::reload() {
         std::string setting = get_setting_from_file(key);
         set(key, setting != "unset" ? setting : value);
     }
-}
-
-void config::set_verbose(bool verbose) {
-    m_is_verbose = verbose;
 }
 
 std::string config::any_to_string(const std::any &value) {
