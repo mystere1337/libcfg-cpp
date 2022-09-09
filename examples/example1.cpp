@@ -11,11 +11,14 @@ int main() {
             {"double", 3.14}
     };
 
-    // Create a config instance, giving a path to the config file and the settings map
+    // Create a config instance, giving a path to the config file and the settings vector
     auto* config = new class config(settings, "./config.cfg", true);
 
     // Change settings at runtime
     config->set("double", 10.4);
+
+    // Or add new settings (note that we're using the same method)
+    config->set("new", "example");
 
     // Save modified settings to file
     config->save();
