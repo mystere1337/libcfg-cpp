@@ -27,17 +27,14 @@ void config::load(const std::vector<std::pair<std::string, std::any>>& settings)
 std::string config::get_setting_from_file(const std::string& setting_name) {
     std::ifstream file(m_path);
     std::string line;
-    std::string value = "unset";
+    std::string value{"unset"};
+    std::string key;
 
     while (std::getline(file, line)) {
-        std::regex pattern(R"(^\s*(.*?)\s*=\s*(.*?)\s*$)");
-        std::smatch matches;
+        key = line.substr(0, line.find('='));
 
-        if (std::regex_match(line, matches, pattern)) {
-            if (matches[1] == setting_name) {
-                value = matches[2].str();
-                break;
-            }
+        if (key == setting_name) {
+            value = line.substr(line.find('=') + 1);
         }
     }
 
