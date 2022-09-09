@@ -2,13 +2,13 @@
 #include <utility>
 #include "config.h"
 
-config::config(const std::vector<std::pair<std::string, std::any>>& settings, std::filesystem::path path, bool verbose) : m_path(std::move(path)), m_is_verbose(verbose) {
+config::config(const std::vector<std::pair<std::string, std::any>>& settings, const std::filesystem::path& path, bool verbose) : m_path(path), m_is_verbose(verbose) {
     load(settings);
-    create_file();
+    save(path);
 }
 
-void config::create_file() {
-    std::ofstream file{ m_path };
+void config::save(const std::filesystem::path& path) {
+    std::ofstream file{ path };
 
     for (const auto& [key, value] : m_settings) {
         file << key << "=" << value << std::endl;
@@ -20,7 +20,7 @@ void config::create_file() {
 void config::load(const std::vector<std::pair<std::string, std::any>>& settings) {
     for (const auto& [key, value] : settings) {
         std::string setting = get_setting_from_file(key);
-        set_setting(key, setting != "unset" ? setting : value);
+        set(key, setting != "unset" ? setting : value);
     }
 }
 
@@ -48,8 +48,19 @@ std::string config::get_setting_from_file(const std::string& setting_name) {
     return value;
 }
 
-void config::set_setting(const std::string &setting_name, const std::any& value) {
+void config::set(const std::string &setting_name, const std::any& value) {
     m_settings[setting_name] = any_to_string(value);
+}
+
+void config::save() {
+    save(m_path);
+}
+
+void config::reload() {
+    for (const auto& [key, value] : m_settings) {
+        std::string setting = get_setting_from_file(key);
+        set(key, setting != "unset" ? setting : value);
+    }
 }
 
 void config::set_verbose(bool verbose) {

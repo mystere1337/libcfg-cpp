@@ -2,7 +2,7 @@
 #include "../src/config.h"
 
 int main() {
-    // 1. Define a settings vector containing all your settings
+    // Define a pair of std::string and std::any vector containing all your settings
     std::vector<std::pair<std::string, std::any>> settings = {
             {"int", 1337},
             {"float", 3.14},
@@ -11,15 +11,24 @@ int main() {
             {"double", 3.14}
     };
 
-    // 2. Create a config instance, giving a path to the config file and the settings map
+    // Create a config instance, giving a path to the config file and the settings map
     auto* config = new class config(settings, "./config.cfg", true);
 
-    // 3. Get settings at runtime using the setting identifier
+    // Change settings at runtime
+    config->set("double", 10.4);
+
+    // Get settings at runtime using the setting identifier
     std::cout << config->get<int>("int") << std::endl;
     std::cout << config->get<float>("float") << std::endl;
     std::cout << config->get<std::string>("string") << std::endl;
     std::cout << config->get<bool>("bool") << std::endl;
     std::cout << config->get<double>("double") << std::endl;
+
+    // Save modified settings to file
+    config->save();
+
+    // Reloading a config will replace unsaved values
+    config->reload();
 
     return 0;
 }
