@@ -19,26 +19,28 @@ int main() {
     };
 
     // Create a config instance, giving a path to the config file and the settings vector
-    auto* config = new class config(settings, "./config.cfg");
+    config config(settings, "./config.cfg");
 
     // Change settings at runtime
-    config->set("double", 10.4);
-    
+    config.set("double", 10.4);
+
     // Or add new settings (note that we're using the same method)
-    config->set("new", "example");
-    
+    config.set("new", "example");
+
     // Save modified settings to file
-    config->save();
+    config.save();
 
     // Reloading a config will replace unsaved values
-    config->reload();
+    config.reload();
 
     // Get settings at runtime using the setting identifier
-    std::cout << config->get<int>("int") << std::endl;
-    std::cout << config->get<float>("float") << std::endl;
-    std::cout << config->get<std::string>("string") << std::endl;
-    std::cout << config->get<bool>("bool") << std::endl;
-    std::cout << config->get<double>("double") << std::endl;
+    std::cout << config.get<int>("int") << std::endl;
+    std::cout << config.get<float>("float") << std::endl;
+    std::cout << config.get<std::string>("string") << std::endl;
+    std::cout << config.get<bool>("bool") << std::endl;
+    std::cout << config.get<double>("double") << std::endl;
+
+    return 0;
 }
 ```
 ### config.cfg
